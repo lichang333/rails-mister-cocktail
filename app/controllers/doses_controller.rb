@@ -15,6 +15,7 @@ class DosesController < ApplicationController
   # GET /doses/new
   def new
     @dose = Dose.new
+    @cocktail = Cocktail.find(params[:cocktail_id])
   end
 
   # GET /doses/1/edit
@@ -30,6 +31,7 @@ class DosesController < ApplicationController
       if @dose.save
         format.html { redirect_to @dose, notice: 'Dose was successfully created.' }
         format.json { render :show, status: :created, location: @dose }
+        # @dose.save
       else
         format.html { render :new }
         format.json { render json: @dose.errors, status: :unprocessable_entity }
