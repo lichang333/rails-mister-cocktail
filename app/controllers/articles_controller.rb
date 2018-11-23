@@ -39,6 +39,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+def cocktail_params
+  params.require(:cocktail).permit(:title, :body, :photo)
+end
+
   # DELETE /articles/1
   def destroy
     @article.destroy

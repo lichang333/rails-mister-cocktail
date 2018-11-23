@@ -61,6 +61,10 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def article_params
+    params.require(:cocktail).permit(:title, :body, :photo)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cocktail
@@ -69,9 +73,9 @@ class CocktailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cocktail_params
-      params.require(:cocktail).permit(:name, :doses_id, :ingredients_id)
+      params.require(:cocktail).permit(:name, :doses_id, :ingredients_id, :photo)
     end
-end
+  end
 
 # class CocktailsController < ApplicationController
 #   def index
